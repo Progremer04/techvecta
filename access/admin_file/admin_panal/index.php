@@ -72,9 +72,7 @@ $conn->close();
                             Add European Address
                         </a>
                         <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Click Here To Add</a>
-                            </li>
+                            
                             <li class="sidebar-item">
                                 <a href="/access/admin_file/admin_panal/index.php?id=<?php echo $_GET['id']; ?>#europeanaddress" class="sidebar-link">Click Here To Show All European Address</a>
                             </li>
@@ -118,7 +116,7 @@ $conn->close();
                                     echo "<a href='#' class='sidebar-link collapsed' data-bs-target='#level-" . $row_users["id"] . "' data-bs-toggle='collapse' aria-expanded='false'>" . $row_users["firstname"] . " " . $row_users["lastname"] . "</a>";
                                     echo "<ul id='level-" . $row_users["id"] . "' class='sidebar-dropdown list-unstyled collapse'>";
                                     echo "<li class='sidebar-item'><a href='/access/php/chatapp/chat.php?sender_id=" . 1 . "&receiver_id=" . $row_users["id"] . "&admin_id=" . 1 . "&admin_online=true' class='sidebar-link'>Chat With " . $row['firstname'] . " " . $row['lastname'] . "</a></li>";
-                                    echo "<li class='sidebar-item'><a href='#' class='sidebar-link'>See Orders</a></li>";
+                                   
                                     echo "</ul>";
                                     echo "</li>";
                                 }
