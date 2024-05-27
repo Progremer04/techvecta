@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
     if(mysqli_num_rows($result_admin) > 0){
         $row_admin = mysqli_fetch_array($result_admin);
         $_SESSION['admin_name'] = $row_admin['firstname']; // Assuming admin's name is stored in 'firstname'
-        header('location: /access/admin_file/index.php?adminid='.$row_admin['id']);
+        header('location: /access/admin_file/admin_panal/index.php?adminid='.$row_admin['id']);
         exit();
     }
 
