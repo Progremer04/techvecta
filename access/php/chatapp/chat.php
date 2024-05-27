@@ -42,7 +42,7 @@ if (isset($_GET['type_order']) && isset($_GET['orderid'])) {
             $stmt_insert->bind_param("iisi", $receiver_id, $sender_id, $message_admin, $bool);
             $stmt_insert->execute();
             // Redirect to prevent form resubmission
-            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id);
+            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id.'#end');
             exit();
         }else         if ($_GET['type_order'] === "currencyexchange") {
             $orderid = $_GET['orderid'];
@@ -76,7 +76,7 @@ if (isset($_GET['type_order']) && isset($_GET['orderid'])) {
             $stmt_insert->bind_param("iisi", $receiver_id, $sender_id, $message_admin, $bool);
             $stmt_insert->execute();
             // Redirect to prevent form resubmission
-            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id);
+            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id.'#end');
             exit();
         }else         if ($_GET['type_order'] === "europeanaddress") {
             $orderid = $_GET['orderid'];
@@ -107,7 +107,7 @@ if (isset($_GET['type_order']) && isset($_GET['orderid'])) {
             $stmt_insert->bind_param("iisi", $receiver_id, $sender_id, $message_admin, $bool);
             $stmt_insert->execute();
             // Redirect to prevent form resubmission
-            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id);
+            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id.'#end');
             exit();
         }else         if ($_GET['type_order'] === "redotpaycard") {
             $orderid = $_GET['orderid'];
@@ -139,7 +139,7 @@ if (isset($_GET['type_order']) && isset($_GET['orderid'])) {
             $stmt_insert->bind_param("iisi", $receiver_id, $sender_id, $message_admin, $bool);
             $stmt_insert->execute();
             // Redirect to prevent form resubmission
-            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id);
+            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id.'#end');
             exit();
         }else         if ($_GET['type_order'] === "wisecard") {
             $orderid = $_GET['orderid'];
@@ -171,7 +171,7 @@ if (isset($_GET['type_order']) && isset($_GET['orderid'])) {
             $stmt_insert->bind_param("iisi", $receiver_id, $sender_id, $message_admin, $bool);
             $stmt_insert->execute();
             // Redirect to prevent form resubmission
-            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id);
+            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id.'#end');
             exit();
         }    }
 }
@@ -242,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_insert->execute();
 
         // Redirect to prevent form resubmission
-        header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id);
+        header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id.'#end');
         exit();
     } elseif (isset($_POST['edit_message_id']) && isset($_POST['edited_message'])) {
         // Edit message logic
@@ -255,7 +255,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_update->bind_param("si", $edited_message_content, $edited_message_id);
         if ($stmt_update->execute()) {
             // Redirect to prevent form resubmission
-            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id);
+            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id.'#end');
             exit();
         } else {
             // Handle database update error
@@ -271,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_delete_message->bind_param("i", $delete_message_id);
         if ($stmt_delete_message->execute()) {
             // Redirect to prevent form resubmission
-            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id);
+            header('Location: ' . $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id.'#end');
             exit();
         } else {
             // Handle database delete error
@@ -550,27 +550,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script>
-        // document.addEventListener('DOMContentLoaded', function () {
-        //     // Enable lightbox
-        //     lightbox.option({
-        //         'resizeDuration': 200,
-        //         'wrapAround': true,
-        //         'disableScrolling': true,
-        //         'alwaysShowNavOnTouchDevices': true
-        //     });
+         document.addEventListener('DOMContentLoaded', function () {
+             // Enable lightbox
+             lightbox.option({
+                 'resizeDuration': 200,
+                 'wrapAround': true,
+                 'disableScrolling': true,
+                 'alwaysShowNavOnTouchDevices': true
+             });
 
-        //     // Close lightbox when clicking outside the image/video
-        //     document.querySelector('.ekko-lightbox-container').addEventListener('click', function (event) {
-        //         if (event.target === this) {
-        //             window.open('<?php echo $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id; ?>', '_blank');
-        //         }
-        //     });
-        // });
+             // Close lightbox when clicking outside the image/video
+             document.querySelector('.ekko-lightbox-container').addEventListener('click', function (event) {
+                 if (event.target === this) {
+                     window.open('<?php echo $_SERVER['PHP_SELF'] . '?sender_id=' . $sender_id . '&receiver_id=' . $receiver_id; ?>#end', '_blank');
+                 }
+             });
+         });
 
-        // // AJAX to refresh page every 2 minutes
-        // setInterval(function(){
-        //     location.reload();
-        // }, 120000);
+         // AJAX to refresh page every 2 minutes
+         setInterval(function(){
+             location.reload();
+         }, 120000);
     </script>
 </body>
 
